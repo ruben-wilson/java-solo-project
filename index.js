@@ -5,7 +5,7 @@ const NotesView = NotesViewFile.NotesView;
 const model = new NotesModel();
 model.addNote("new note1");
 model.addNote("new note2");
-console.log(model.getNotes());
+// console.log(model.getNotes());
 const view = new NotesView(model);
-view.displayNotes();
+view.loadNotes();
 

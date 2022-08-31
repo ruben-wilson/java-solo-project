@@ -25,8 +25,21 @@ describe("notes view", () => {
 		model.addNote("note5");
 		model.addNote("note6");
 		const view = new NotesView(model);
-		view.displayNotes();
+		view.loadNotes();
 
-		expect(document.querySelectorAll("div").length).toEqual(6);
+		expect(document.querySelectorAll("div").length).toEqual(7);
+	});
+
+  it("add a note to html", () => {
+		const model = new Model();
+    document.body.innerHTML = fs.readFileSync('./index.html')
+		const view = new NotesView(model);
+    const inputField = document.querySelector("#message-input")
+    inputField.value = 'input 1';
+    const showMessage = document.querySelector("#show-message-button")
+    showMessage.click();
+
+
+		expect(document.querySelector('#message').textContent).toEqual('input 1');
 	});
 });

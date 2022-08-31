@@ -34,17 +34,26 @@
         constructor(model2) {
           this.model = model2;
           this.bodyEl = document.querySelector("body");
+          this.button = document.querySelector("#show-message-button");
+          this.button.addEventListener("click", () => {
+            this.createNote(document.querySelector("#message-input").value);
+          });
         }
-        displayNotes() {
+        loadNotes() {
           for (const e of this.model.getNotes()) {
-            this.addNoteDiv(e);
+            this.CreateDiv(e);
           }
         }
-        addNoteDiv(string) {
+        CreateDiv(string) {
           let div = document.createElement("div");
-          let p = document.createElement("p");
-          div.append(string, p);
+          div.id = "message";
+          div.textContent = string;
           this.bodyEl.append(div);
+        }
+        createNote(string) {
+          this.model.addNote(string);
+          this.CreateDiv(string);
+          document.querySelector("#message-input").value = null;
         }
       };
       module.exports = { NotesView: NotesView2, NotesModel: NotesModel2 };
@@ -58,7 +67,6 @@
   var model = new NotesModel();
   model.addNote("new note1");
   model.addNote("new note2");
-  console.log(model.getNotes());
   var view = new NotesView(model);
-  view.displayNotes();
+  view.loadNotes();
 })();
