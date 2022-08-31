@@ -1,12 +1,11 @@
 const NotesModel = require("./notesModel");
 const Model = new NotesModel();
-const fs = require("fs");
+// const fs = require("fs");
 
 class NotesView {
 	constructor(model) {
 		this.model = model;
-		this.bodyEl = document.querySelectorAll("body");
-		console.log(this.bodyEl);
+		this.bodyEl = document.querySelector("body");
 	}
 
 	displayNotes() {
