@@ -34,6 +34,7 @@ describe("notes view", () => {
 		const model = new Model();
     document.body.innerHTML = fs.readFileSync('./index.html')
 		const view = new NotesView(model);
+
     const inputField = document.querySelector("#message-input")
     inputField.value = 'input 1';
     const showMessage = document.querySelector("#show-message-button")
@@ -41,5 +42,32 @@ describe("notes view", () => {
 
 
 		expect(document.querySelector('#message').textContent).toEqual('input 1');
+	});
+
+it("only adds an input once", () => {
+	const model = new Model();
+    document.body.innerHTML = fs.readFileSync('./index.html')
+		const view = new NotesView(model);
+		
+    const inputField = document.querySelector("#message-input")
+    inputField.value = 'input 1';
+    const showMessage = document.querySelector("#show-message-button")
+    showMessage.click();
+    showMessage.click();
+		expect(document.querySelector('#message').textContent).toEqual('input 1');
+	});
+	
+  it("empty input adds and displays nothing", () => {
+	const model = new Model();
+    document.body.innerHTML = fs.readFileSync('./index.html')
+		const view = new NotesView(model);
+		
+    const inputField = document.querySelector("#message-input")
+    inputField.value = null;
+    const showMessage = document.querySelector("#show-message-button")
+    showMessage.click();
+    showMessage.click();
+
+		expect(document.querySelector('#message')).toBeNull()
 	});
 });

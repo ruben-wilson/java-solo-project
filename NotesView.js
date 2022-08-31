@@ -32,9 +32,12 @@ class NotesView {
 	}
 	
   createNote(string){
+		if (string.length == 0) {return}
+		else {  
 		this.model.addNote(string);
 		this.CreateDiv(string);
     document.querySelector('#message-input').value = null;
+	}
   }
 
 }

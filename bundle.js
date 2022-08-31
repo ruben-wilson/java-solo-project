@@ -51,9 +51,13 @@
           this.bodyEl.append(div);
         }
         createNote(string) {
-          this.model.addNote(string);
-          this.CreateDiv(string);
-          document.querySelector("#message-input").value = null;
+          if (string.length == 0) {
+            return;
+          } else {
+            this.model.addNote(string);
+            this.CreateDiv(string);
+            document.querySelector("#message-input").value = null;
+          }
         }
       };
       module.exports = { NotesView: NotesView2, NotesModel: NotesModel2 };
