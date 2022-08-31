@@ -26,7 +26,7 @@ describe("notes view", () => {
 		model.addNote("note6");
 		const view = new NotesView(model);
 		view.displayNotes();
-    console.log(document.querySelector("div").textContent)
+
 		expect(document.querySelectorAll("div").length).toEqual(6);
 	});
 });

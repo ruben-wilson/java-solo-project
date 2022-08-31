@@ -8,3 +8,4 @@ model.addNote("new note2");
 console.log(model.getNotes());
 const view = new NotesView(model);
 view.displayNotes();
+
